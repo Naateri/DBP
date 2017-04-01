@@ -18,7 +18,14 @@ public class ClaseApplication {
 	//para probar: http://localhost:8080/hello
 	void hello(HttpServletResponse response){
 		try{
-			response.getOutputStream().println("Hola Mundo!");
+			Integer i = 0;
+			String name = request.getParameter("name"); //user input
+			String html = "<html><i style = 'color: red'>Hola " + i + "Mundo!\n </i></html>"; //test
+			response.setHeader("Content-Type", "html"); //headers
+			while(true){
+				response.getOutputStream().println(html);
+				i+=1;
+			}
 		} catch (IOException e){
 		}
 	}
