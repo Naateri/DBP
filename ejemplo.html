@@ -1,6 +1,19 @@
 <html>
 	<head>
 		<title> Ejemplo DBP HTML</title>
+		<style type="text/css">
+			body{
+				background-color: lightblue;
+			}
+			thead{
+				background-color: black;
+				color: white;
+				font-family: Arial ;
+			}
+			.Nomb{
+				background-color: red;
+			}
+		</style> <!-- CSS -->
 		<script type = "text/javascript">
 			function agregar() {
 				var nom = document.getElementById("nombre"); //getElementbyID retorna un elemento según su id
@@ -9,15 +22,17 @@
 				//alert("Hola " + nom.value + " " + apel.value + "!");
 				var row = document.createElement("tr"); //crea un tr
 				var tbody = document.getElementById("contenido");
-				var tdNombre = document.createElement("td");
+				/*var tdNombre = document.createElement("td");
 				var tdID = document.createElement("td");
 				var tdApellido = document.createElement("td");
 				tdID.innerHTML = tbody.children.length+1; //length = longitud del arreglo
+				tdID.style.backgroundColor = green;
 				tdNombre.innerHTML = nom.value;
 				tdApellido.innerHTML = apel.value;
 				row.appendChild(tdID);
 				row.appendChild(tdNombre);
-				row.appendChild(tdApellido);
+				row.appendChild(tdApellido);*/
+				row.innerHTML = "<tr><td>" + (tbody.children.length+1) + "</td><td>" + nom.value + "</td><td style = 'background-color: blue; color: white;'>" + apel.value + "</td></tr>"; //concatenar html y css
 				tbody.appendChild(row); //se agrega al final como hijo
 			}
 		</script> 
@@ -30,7 +45,7 @@
 			</div>
 			<div> 
 				<span> Apellido: </span>
-				<input type = "text" id = "apellido" value = "Computer Science"/>
+				<input type = "text" id = "apellido" placeholder="tu apellido papu" />
 			</div>
 			<button onclick="agregar();">Agregar</button> <!-- llamar a la funcion agregar si se hace click-->
 		</div>
@@ -38,7 +53,7 @@
 			<thead>
 				<tr>
 					<th> ID </th>
-					<th> Nombre </th>
+					<th class="Nomb"> Nombre </th>
 					<th> Swag </th>
 				</tr>
 			</thead>
