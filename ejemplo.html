@@ -1,18 +1,38 @@
 <html>
 	<head>
 		<title> Ejemplo DBP HTML</title>
+		<script type = "text/javascript">
+			function agregar() {
+				var nom = document.getElementById("nombre"); //getElementbyID retorna un elemento según su id
+				//nom.value = nom.value ? nom.value : "Mundo!";
+				var apel = document.getElementById("apellido");
+				//alert("Hola " + nom.value + " " + apel.value + "!");
+				var row = document.createElement("tr"); //crea un tr
+				var tbody = document.getElementById("contenido");
+				var tdNombre = document.createElement("td");
+				var tdID = document.createElement("td");
+				var tdApellido = document.createElement("td");
+				tdID.innerHTML = tbody.children.length+1; //length = longitud del arreglo
+				tdNombre.innerHTML = nom.value;
+				tdApellido.innerHTML = apel.value;
+				row.appendChild(tdID);
+				row.appendChild(tdNombre);
+				row.appendChild(tdApellido);
+				tbody.appendChild(row); //se agrega al final como hijo
+			}
+		</script> 
 	</head>
 	<body>
 		<div>
 			<div> 
 				<span> Nombre: </span>
-				<input type = "text"/>
+				<input type = "text" id = "nombre" value = "UCSP"/>
 			</div>
 			<div> 
 				<span> Apellido: </span>
-				<input type = "text"/>
+				<input type = "text" id = "apellido" value = "Computer Science"/>
 			</div>
-			<button>Guardar</button>
+			<button onclick="agregar();">Agregar</button> <!-- llamar a la funcion agregar si se hace click-->
 		</div>
 		<table border="4">
 			<thead>
@@ -22,7 +42,7 @@
 					<th> Swag </th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody id = "contenido"> <!-- es como crear una variable de tipo tbody llamada contenido-->
 				<tr>
 					<td/>1
 					<td>Juan</td>
